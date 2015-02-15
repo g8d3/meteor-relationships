@@ -1,5 +1,5 @@
 # meteor-relationships
-Define Meteor Collections in a concise way.
+Define Meteor Collections, fields, relationships and validations in a concise way.
 
 ```
 Post = new MCollection([
