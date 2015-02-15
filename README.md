@@ -15,13 +15,14 @@ Post = new MCollection([
 ```
 Post = new MCollection({
   name:      String
-  ids:       Array
+  authorId:  belongsTo
+  tagIds:    Array
   createdAt: Date
 }, {
   before: 
     create: [
       -> name.length > 5
-      -> ids.all(Integer)
+      -> ids.all(Number)
       -> createdAt >= Time.now()
     ]
     read:   [Function]
@@ -34,3 +35,44 @@ Post = new MCollection({
     delete: [Function]
 })
 ```
+
+Rails like:
+
+```
+Post = new Model ->
+  belongsTo  'author'
+  hasMany    'tags'
+  field      'name', String
+  timestamps
+  # createdAt and updatedAt might be used singularly
+  
+  before
+    create: [Function]
+    read:   [Function]
+    update: [Function]
+    save:   [Function] # This is both create and update
+    delete: [Function]
+    
+  after
+    create: [Function]
+    read:   [Function]
+    update: [Function]
+    save:   [Function] # This is both create and update
+    delete: [Function]
+```
+
+And option to add callbacks later
+
+```
+Post.after.create [Function] || Function || String
+```
+
+# Mental notes
+
+What I miss from Rails:
+
+1. Not having to define a schema that is already defined on database
+2. In the case of Mongo where there is no schema already defined, at least having all those great methods to define relationships, validations and callbacks
+3. The nesting ability, send a map of objects and create records in different collections/tables all being validated/callbacked
+
+I don't like to use the validations callbacks though, because callbacks are enough for my preference. Ambiguous.
