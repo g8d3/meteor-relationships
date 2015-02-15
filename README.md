@@ -61,6 +61,7 @@ Post = new Model ->
     save:   [Function] # This is both create and update
     delete: [Function]
     
+  # Validations executed before save
   # $ given ! is not allowed
   present   'name'
   format    'name', RegExp || Function || [RegExp] || [Function]
