@@ -23,7 +23,8 @@ Post = new Model ->
     save:   [Function] # This is both create and update
     delete: [Function]
     
-  # Validations executed before save
+  # Validations executed before save,
+  # i.e. these are shortcuts to define commonly used callbacks
   # $ given ! is not allowed
   present   'name'
   format    'name', RegExp || Function || [RegExp] || [Function]
