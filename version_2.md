@@ -37,5 +37,5 @@ And option to add callbacks and validations after definition:
 
 ```
 Post.after.create [Function] || Function || String
-Post.validates.presence String
+Post.present 'name'
 ```
