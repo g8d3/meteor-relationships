@@ -32,7 +32,7 @@ Post = new Model ->
   inclusion 'tags', [Number] || [Tag]
 ```
 
-And option to add callbacks and validations later
+And option to add callbacks and validations after definition:
 
 ```
 Post.after.create [Function] || Function || String
