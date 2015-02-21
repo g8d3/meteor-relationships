@@ -1,7 +1,7 @@
 Rails like:
 
 ```
-Post = new Model ->
+Model 'Post', ->
   belongsTo  'author'
   hasMany    'tags'
   field      'name', String
